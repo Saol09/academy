@@ -1,0 +1,13 @@
+name: 'Docker build'
+description: 'Docker Build step'
+inputs:
+  greet:
+    description: 'Greet'
+    required: false
+    default: '{{ default-value }}'
+runs:
+  using: composite
+  steps:
+    - run: |
+        echo "Hello World"
+      shell: bash
