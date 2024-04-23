@@ -5,9 +5,26 @@ inputs:
     description: 'Greet'
     required: false
     default: 'World'
+  path_dockerfile:
+    description: 'Dockerfile location'
+    required: false
+    default: 'Dockerfile'
+  image_name:
+    description: 'Image name'
+    required: true
+  tag_name:
+    description: 'Tag name'
+    required: false
+
 runs:
   using: composite
   steps:
     - run: |
-        echo "Hello World"
+        if [ -z "${{ inputs.{{input-name}} }}" ]; then
+          echo "TAG=$(date +%s)" >> $GITHUB_ENV
+        else
+          echo "TAG=${{ inputs.{{input-name}} }}" >> $GITHUB_ENV
+        fi
+        echo "DOCKER_IMAGE_NAME=$NAME" >> $GITHUB_ENV 
+        docker build . --file "$NAME" --tag academy:$(date +%s)
       shell: bash
