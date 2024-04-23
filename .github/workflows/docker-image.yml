@@ -25,7 +25,7 @@ jobs:
       - name: Push the Docker image
         uses: Saol09/academy/.github/actions/docker_push@main
         with:
-          tag_name: ${{ secrets.DOCKER_USERNAME}}
-          image_name: ${{env.DOCKER_IMAGE_NAME}}
+          dockerUsername: ${{ secrets.DOCKER_USERNAME}}
+          imageName: ${{env.DOCKER_IMAGE_NAME}}
       - name: List Docker images
         run: docker images
