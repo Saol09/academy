@@ -1,10 +1,6 @@
 name: 'Docker build'
-description: 'Docker Build step'
+description: 'Docker Build action'
 inputs:
-  greet:
-    description: 'Greet'
-    required: false
-    default: 'World'
   path_dockerfile:
     description: 'Dockerfile location'
     required: false
