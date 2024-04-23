@@ -12,9 +12,7 @@ runs:
   using: composite
   steps:
     - run: |
-        PUSH_IMAGE=${{inputs.dockerUsername}}/${{inputs.imageName}}
-        echo "$PUSH_IMAGE"
-        docker tag ${{inputs.imageName}} $PUSH_IMAGE
+        docker tag ${{inputs.imageName}}${{inputs.dockerUsername}}/${{inputs.imageName}}
         docker push $PUSH_IMAGE
 
       shell: bash
